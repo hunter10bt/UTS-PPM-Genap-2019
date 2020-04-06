@@ -59,8 +59,6 @@
             </div>
             <div data-jqm-role="content">
                 <ul id="daftarPinjaman" data-jqm-role=listview>
-                    <li><a>1</a></li>
-                    <li><a>2</a></li>
                 </ul>
             </div>
         </div>
@@ -86,7 +84,7 @@
                         <input type="text" name="return" id="return" placeholder="Tingkat bunga dimasukkan di sini" readonly>
                     </div>
                     <div data-role="fieldcontain">
-                        <input type="submit" name="submit" id="submit" onclick="calculate()">
+                        <input type="submit" name="submit" id="submit" onclick="submit()">
                     </div>
                 </form>
             </div>
@@ -121,9 +119,45 @@
             document.getElementById("return").value = kembalian;
 
             add = Peminjaman(pinjaman, durasi,totalPinjam ,kembalian);
-            totalPinjam += 1;
             
             list.push(add)
+
+            var page = '\
+            <div data-jqm-role="page" id=""pinjaman"' + String(totalPinjam)+'">\
+                <div data-jqm-role="header">\
+                <h2>Input Peminjaman</h2>\
+                <a href="#list" role="button" class="ui-link ui-btn">Daftar Pinjaman</a>\
+                </div>\
+                <div data-jqm-role="content">\
+                    <form action="" method="post">\
+                        <div data-role="fieldcontain">\
+                            <label for="value">Jumlah pinjaman:</label>\
+                            <input type="text" name="value" placeholder="'+ String(pinjaman)+'"readonly>\
+                        </div>\
+                        <div data-role="fieldcontain">\
+                            <label for="duration">Lama pinjaman (bulan):</label>\
+                            <input type="number" name="duration" value="'+String(durasi)+'"readonly>\
+                        </div>\
+                        <div data-role="fieldcontain">\
+                            <label for="interest">Tingkat Bunga:</label>\
+                            <input type="text" name="interest" id="interest" placeholder="'+String(bunga * durasi)+"%"+'" readonly>\
+                            <label for="return">Jumlah pengembalian:</label>\
+                            <input type="text" name="return" id="return" placeholder="'+String(kembalian)+'" readonly>\
+                        </div>\
+                    </form>\
+                </div>';
+
+            var addition = document.createElement("li")
+            var link = document.createElement("a")
+            var text = document.createTextNode("Pinjaman" + String(totalPinjam))
+            link.setAttribute("href", "pinjaman" + String(totalPinjam))
+            link.appendChild(text)
+
+            addition.appendChild(link)
+
+            document.getElementById("daftarPinjaman").appendChild(addition)
+            totalPinjam += 1;
+            document.getElementsByTagName("body").innerHTML = document.getElementsByTagName("body").innerHTML + page
         }
     </script>
 </html>
