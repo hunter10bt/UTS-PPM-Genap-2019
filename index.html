@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Example illustrating use of the "mobileinit" event</title>
+        <title>Aplikasi Peminjaman</title>
         <meta charset=utf-8 />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="http://code.jquery.com/jquery.min.js"></script>
@@ -22,13 +22,25 @@
     <body>
         <div data-jqm-role="page">
             <div data-jqm-role="header">
-            <h2>jQuery Mobile Example</h2>
+            <h2>Input Peminjaman</h2>
             </div>
             <div data-jqm-role="content">
-            <div id="the-popup" data-jqm-role="popup" data-jqm-position-to="window">
-                <p>Example popup.</p>
-            </div>
-            <a href="#the-popup" data-jqm-rel="popup" class="ui-btn ui-corner-all ui-shadow">Open Popup</a>
+                <form action="" method="post">
+                    <div data-role="fieldcontain">
+                        <label for="value">Jumlah pinjaman:</label>
+                        <input type="text" name="value" id="value" placeholder="Masukkan jumlah pinjaman">
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="duration">Lama pinjaman:</label>
+                        <input type="number" name="duration" id="duration">
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="interest">Tingkat Bunga:</label>
+                        <input type="text" name="interest" id="interest" placeholder="Tingkat bunga dimasukkan di sini" aria-readonly="true">
+                        <label for="return">Jumlah pengembalian:</label>
+                        <input type="text" name="return" id="return" placeholder="Tingkat bunga dimasukkan di sini" aria-readonly="true">
+                    </div>
+                </form>
             </div>
         </div>
     </body>
