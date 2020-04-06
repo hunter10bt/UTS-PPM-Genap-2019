@@ -17,6 +17,7 @@
             });
             
             var totalPinjam = 0
+            var list = []
 
             class Peminjaman{
                 constructor(jumlah, lama, id, total){
@@ -50,6 +51,7 @@
         <div data-jqm-role="page" id="list">
             <div data-jqm-role="header">
                 <h2>Daftar Pinjaman</h2>
+                <a href="#list" role="button">Input Pinjaman</a>
             </div>
             <div data-jqm-role="content">
                 <ul id="daftarPinjaman" data-jqm-role=listview>
@@ -59,6 +61,7 @@
         <div data-jqm-role="page" id="inputPinjaman">
             <div data-jqm-role="header">
             <h2>Input Peminjaman</h2>
+            <a href="#list" role="button">Daftar Pinjaman</a>
             </div>
             <div data-jqm-role="content">
                 <form action="" method="post">
@@ -75,6 +78,9 @@
                         <input type="text" name="interest" id="interest" placeholder="Tingkat bunga dimasukkan di sini" readonly>
                         <label for="return">Jumlah pengembalian:</label>
                         <input type="text" name="return" id="return" placeholder="Tingkat bunga dimasukkan di sini" readonly>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <input type="submit" name="submit" id="submit" onclick="calculate()">
                     </div>
                 </form>
             </div>
@@ -97,11 +103,21 @@
             
             document.getElementById("interest").value = String(bunga * durasi)+"%"
             document.getElementById("return").value = kembalian;
+        }
+        function submit(){
+            
+            var pinjaman = Number(document.getElementById("value").value);
+            var durasi = Number(document.getElementById("duration").value);
+            var tambahan = pinjaman * durasi * bunga / 100;
+            var kembalian = tambahan + pinjaman
+            
+            document.getElementById("interest").value = String(bunga * durasi)+"%"
+            document.getElementById("return").value = kembalian;
 
             add = Peminjaman(pinjaman, durasi,totalPinjam ,kembalian);
             totalPinjam += 1;
-
             
+            list.push(add)
         }
     </script>
 </html>
