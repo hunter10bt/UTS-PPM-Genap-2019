@@ -16,6 +16,10 @@
             $.mobile.ns = "jqm-";
             });
             
+            $( ".selector" ).on( "pagecontainerchangefailed", function( event, ui ) {
+                alert("Page change failed.")
+            } );
+
             var totalPinjam = 0
             var list = []
 
@@ -51,7 +55,7 @@
         <div data-jqm-role="page" id="list">
             <div data-jqm-role="header">
                 <h2>Daftar Pinjaman</h2>
-                <a href="#list" role="button">Input Pinjaman</a>
+                <a href="#inputPinjaman" role="button" class="ui-link ui-btn">Input Pinjaman</a>
             </div>
             <div data-jqm-role="content">
                 <ul id="daftarPinjaman" data-jqm-role=listview>
@@ -61,7 +65,7 @@
         <div data-jqm-role="page" id="inputPinjaman">
             <div data-jqm-role="header">
             <h2>Input Peminjaman</h2>
-            <a href="#list" role="button">Daftar Pinjaman</a>
+            <a href="#list" role="button" class="ui-link ui-btn">Daftar Pinjaman</a>
             </div>
             <div data-jqm-role="content">
                 <form action="" method="post">
