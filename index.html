@@ -19,10 +19,11 @@
             var totalPinjam = 0
 
             class Peminjaman{
-                constructor(jumlah, lama, id){
+                constructor(jumlah, lama, id, total){
                     this.jumlah = jumlah
                     this.lama = lama
                     this.id = id
+                    this.total = total
                 }
 
                 getJumlah(){
@@ -35,6 +36,10 @@
 
                 getID(){
                     return this.id
+                }
+
+                getTotal(){
+                    return this.total
                 }
             }
         </script>
@@ -83,6 +88,11 @@
             
             document.getElementById("interest").value = String(bunga * durasi)+"%"
             document.getElementById("return").value = kembalian;
+
+            add = Peminjaman(pinjaman, durasi,totalPinjam ,kembalian);
+            totalPinjam += 1;
+
+            
         }
     </script>
 </html>
