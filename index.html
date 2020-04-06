@@ -28,11 +28,11 @@
                 <form action="" method="post">
                     <div data-role="fieldcontain">
                         <label for="value">Jumlah pinjaman:</label>
-                        <input type="text" name="value" id="value" placeholder="Masukkan jumlah pinjaman">
+                        <input type="text" name="value" id="value" placeholder="Masukkan jumlah pinjaman" oninput="calculate()">
                     </div>
                     <div data-role="fieldcontain">
-                        <label for="duration">Lama pinjaman:</label>
-                        <input type="number" name="duration" id="duration">
+                        <label for="duration">Lama pinjaman (bulan):</label>
+                        <input type="number" name="duration" id="duration" min="1" onclick="calculate()">
                     </div>
                     <div data-role="fieldcontain">
                         <label for="interest">Tingkat Bunga:</label>
@@ -44,4 +44,23 @@
             </div>
         </div>
     </body>
+    <script>
+        function calculate(){
+            var pinjaman = Number(document.getElementById("value").value);
+            var durasi = Number(document.getElementById("duration").value);
+
+            if(durasi > 12)
+                var bunga = 1;
+            else if (durasi > 6)
+                var bunga = 1.5;
+            else
+                var bunga = 2;
+
+            var tambahan = pinjaman * durasi * bunga / 100;
+            var kembalian = tambahan + pinjaman
+            
+            document.getElementById("interest").value = String(bunga * durasi)+"%"
+            document.getElementById("return").value = kembalian;
+        }
+    </script>
 </html>
